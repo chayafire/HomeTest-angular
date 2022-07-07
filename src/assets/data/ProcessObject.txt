@@ -1,0 +1,50 @@
+Process {
+    superClaim: {
+        superClaimNum: 500040204,
+        superClaimStatus: {
+            code: 1,
+            value: "פתוחה"
+        };
+    	superClaimType : {
+            code : null,
+            value : null
+        },
+	eventDate: null,
+       claimCause: {
+            code : 2,
+            value : "תאונה"
+        },
+       injuryType: {
+            code : null,
+            value : null
+        },
+	submitedBy: 1,
+	submitionMethod: {
+            code : null,
+            value : null
+        },
+    };
+    insured: {
+        address: {
+            cityName: null,
+            streetName: null,
+        };
+        identityType: 1,
+        age: 30,
+        lastName: "כהן",
+        identity: 312536945;
+        firstName: "אסף";
+    };
+    contactPersons: [{
+        id: 1;
+        deliveryFlag: false;
+        type: {
+            code: null,
+            value: null,
+        }
+        name: "ניקיטה ג'ין",
+        phoneNumber: null,
+        email: null,
+        address: null,
+    }];
+}

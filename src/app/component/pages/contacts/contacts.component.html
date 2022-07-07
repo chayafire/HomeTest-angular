@@ -1,0 +1,82 @@
+<div *ngIf="process">
+    <div class="container border-componnent">
+        <h5>אנשי קשר</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>מועדף:</th>
+                    <th>שם איש קשר</th>
+                    <th>סוג</th>
+                    <th>כתובת</th>
+                    <th>טלפון נייד</th>
+                    <th>דוא"ל</th>
+                </tr>
+            </thead>
+
+            <tr *ngFor="let item of process.contactPersons">
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" (change)="sendFormInformation()" id="deliveryFlag2" name="deliveryFlag2"
+                            [(ngModel)]="item.deliveryFlag">
+                    </div>
+                </td>
+                <td>{{item.name}}</td>
+                <td>{{item.type.value}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.phoneNumber|phone}}</td>
+                <td>{{item.email}}</td>
+            </tr>
+
+        </table>
+        <form [formGroup]="formConacts">
+            <table class="table">
+                <tr *ngIf="showAddnew">
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" id="deliveryFlag" name="deliveryFlag" formControlName="deliveryFlag">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="string" required class="form-control" id="name" name="name"
+                                formControlName="name">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select class="form-control" formControlName="type" id="type" name="type">
+                                <option *ngFor="let item of dropDownListData['contactPersonType/submitedBy']"
+                                    [ngValue]=item.code>
+                                    {{item.value}}</option>
+                            </select>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="string" class="form-control" id="address" formControlName="address"
+                                name="address">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" id="phoneNumber" formControlName="phoneNumber"
+                                name="phoneNumber">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="email" required class="form-control" id="email" name="email"
+                                formControlName="email">
+                        </div>
+                    </td>
+                    <td>
+                        <button [disabled]="!formConacts.valid" (click)="addNewContact()" type="submit">+</button>
+                    </td>
+
+                </tr>
+            </table>
+        </form>
+        <button class="btn btn-link" (click)="showAddnew=true">הוסף איש קשר</button>
+    </div>
+</div>

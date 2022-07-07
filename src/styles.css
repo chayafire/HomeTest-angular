@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    color: rgb(26, 26, 105);
+  }
+  .btn-primary{
+    background-color:  rgb(26, 26, 105)!important;
+    border-color:  rgb(26, 26, 105)!important;
+  }
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 2px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+  button{
+    margin: 2px;
+  }
+  .border-componnent{
+      border: solid;
+      padding: 10px;
+  }
+ 

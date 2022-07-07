@@ -1,0 +1,73 @@
+<div class="container border-componnent">
+    <h5>ריכוז מידע בתהליך</h5>
+    <strong>פרטי מבוטח:</strong>
+    <table class="table" *ngIf="process">
+        <tr>
+            <th>שם</th>
+            <th>ת.ז</th>
+            <th>גיל</th>
+            <th>כתובת</th>
+        </tr>
+
+        <tr>
+            <td>{{process.insured.firstName+" "+process.insured.lastName}}</td>
+            <td>{{process.insured.identity}}</td>
+            <td>{{process.insured.age}}</td>
+            <td>{{process.insured.address.cityName+"/"+process.insured.address.streetName}}</td>
+        </tr>
+    </table>
+    <form [formGroup]="formInformation">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="superClaimType">סוג תביעת על:</label>
+                    <select class="form-control" formControlName="superClaimType" id="submitisuperClaimTypeonMethod"
+                        name="superClaimType">
+                        <option *ngFor="let item of dropDownListData.superClaimType" [ngValue]=item.code>{{item.value}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="claimCause">סיבת אירוע:</label>
+                    <select class="form-control" formControlName="claimCause" id="claimCause" name="power">
+                        <option *ngFor="let item of dropDownListData.claimCause"
+                            [ngValue]={code:item.code,value:item.value}>{{item.value}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="submitedBy">תביעה הוגשה באמצעות:</label>
+                    <select class="form-control" formControlName="submitedBy" id="submitedBy" name="submitedBy">
+                        <option *ngFor="let item of dropDownListData['contactPersonType/submitedBy']"
+                            [ngValue]=item.code>
+                            {{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="eventDate">תאריך אירוע:</label>
+                    <input type="date" class="form-control" formControlName="eventDate" id="eventDate" name="eventDate">
+                </div>
+
+                <div *ngIf="formInformation.value.claimCause" class="form-group">
+                    <label for="injuryType">מהות האירוע:</label>
+                    <select class="form-control"  formControlName="injuryType" id="injuryType" name="injuryType">
+                        <option *ngFor="let item of dropDownListData.injuryType"
+                            [ngValue]={code:item.code,value:item.value}>{{item.value}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="submitionMethod">אופן קבלת התביעה:</label>
+                    <select class="form-control" formControlName="submitionMethod" id="submitionMethod"
+                        name="submitionMethod">
+                        <option *ngFor="let item of dropDownListData.submitionMethod" [ngValue]=item.code>{{item.value}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

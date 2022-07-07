@@ -1,0 +1,25 @@
+<div *ngIf="process" class="container">
+    <div class="d-flex justify-content-between">
+        <div>
+            <strong>תביעה על:</strong><span>{{process.superClaim.superClaimNum}}</span>
+        </div>
+
+        <div>
+
+            <strong>מצב תביעה:</strong><span>{{process.superClaim.superClaimStatus.value}}</span>
+        </div>
+        <div>
+            <button class="btn btn-primary" (click)="resetForms()">רענון תהליך</button>
+        </div>
+
+    </div>
+    <!-- Components -->
+    <app-concentration-information-process #informationProcess (formGroupChange)="onFormGroupChangeEvent($event)"
+        [process]="process" [dropDownListData]="dropDownListData"></app-concentration-information-process>
+    <app-concentration-contacts [process]="process" [dropDownListData]="dropDownListData"></app-concentration-contacts>
+    <app-contacts #appContact [process]="process" (formGroupChange)="onFormGroupChangeEvent($event)"
+        [dropDownListData]="dropDownListData"></app-contacts>
+    <div class="d-flex justify-content-end">
+        <button [disabled]="!validFormInformation" class="btn btn-primary" (click)="logProcess()">המשך-></button>
+
+    </div>
